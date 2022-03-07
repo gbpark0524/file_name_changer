@@ -1,16 +1,10 @@
 import os
 import json
 from tkinter import *
+from fn_file import *
 
-try:
-    with open('setting.json', 'r') as settingFile:
-        setting = json.load(settingFile)
-except:
-    setting = dict()
-    setting['path_in'] = 'in'
-    setting['path_out'] = 'out'
-    setting['extension'] = 'txt'
 
+setting = get_setting()
 
 path_in = setting['path_in']
 path_out = setting['path_out']
