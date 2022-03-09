@@ -12,4 +12,3 @@ def get_setting():
         setting['extension'] = 'txt'
 
     return setting
-
