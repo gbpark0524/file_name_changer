@@ -13,7 +13,7 @@ def get_setting():
         setting = dict()
         setting['path_in'] = dir_in
         setting['path_out'] = dir_out
-        setting['json'] = os.curdir
+        setting['path_data'] = os.curdir
         setting['extension'] = 'txt'
 
     return setting

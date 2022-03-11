@@ -4,6 +4,8 @@ from tkinter import *
 from tkinter import filedialog
 from fn_file import *
 
+setting = get_setting()
+
 root = Tk()
 # root.geometry("600x400")
 root.title("fileNameChanger")
@@ -21,24 +23,24 @@ entry_ext = Entry(root, width=4)
 # TODO - call initial dir from entry
 def get_path_in():
     entry_path_in.delete(0, END)
-    entry_path_in.insert(0, filedialog.askdirectory(initialdir=os.curdir, title="select folder"))
+    entry_path_in.insert(0, filedialog.askdirectory(initialdir=setting['path_in'], title="select folder"))
 
 
 def get_path_out():
     entry_path_out.delete(0, END)
-    entry_path_out.insert(0, filedialog.askdirectory(initialdir=os.curdir, title="select folder"))
+    entry_path_out.insert(0, filedialog.askdirectory(initialdir=setting['path_out'], title="select folder"))
 
 
 def get_path_data():
     entry_path_data.delete(0, END)
-    entry_path_data.insert(0, filedialog.askopenfilename(initialdir=os.curdir,
+    entry_path_data.insert(0, filedialog.askopenfilename(initialdir=setting['path_data'],
                                                          title="select json file", filetypes=[("JSON files", ".json")]))
 
 
 btn_help_data = Button(root, text='[?]', overrelief=SOLID)
 btn_path_data = Button(root, text='json data file', overrelief=SOLID, command=get_path_data)
 btn_path_in = Button(root, text='input file path', overrelief=SOLID, command=get_path_in)
-btn_path_out = Button(root, text='output file path', relief=RAISED, command=get_path_out)
+btn_path_out = Button(root, text='output file path', overrelief=SOLID, command=get_path_out)
 btn_save = Button(root, text='setting save', overrelief=SOLID)
 btn_change = Button(root, text='file name change', overrelief=SOLID)
 
@@ -55,9 +57,9 @@ entry_ext.grid(row=3, column=2, padx=5, pady=2)
 btn_save.grid(row=4, column=0, padx=5, pady=2, sticky=EW)
 btn_change.grid(row=4, column=1, columnspan=2, padx=5, pady=2, sticky=EW)
 
-setting = get_setting()
 entry_path_in.insert(0, setting['path_in'])
 entry_path_out.insert(0, setting['path_out'])
+entry_path_data.insert(0,setting['path_data'])
 entry_ext.insert(0, setting['extension'])
 
 root.mainloop()
