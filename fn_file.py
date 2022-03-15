@@ -17,3 +17,15 @@ def get_setting():
         setting['extension'] = 'txt'
 
     return setting
+
+def get_data(path_data):
+    json_data = []
+    try:
+        with open(path_data, 'r') as file_json_data:
+            json_data['data'] = json.load(file_json_data)
+    except IOError:
+        json_data['result'] = 'error'
+    else:
+        json_data['result'] = 'success'
+    finally:
+        return json_data

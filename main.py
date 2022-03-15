@@ -35,10 +35,7 @@ def get_path_data():
                                                          title="select json file", filetypes=[("JSON files", ".json")]))
 
 def save_setting():
-    setting['path_in'] = entry_path_in.get()
-    setting['path_out'] = entry_path_out.get()
-    setting['path_data'] = entry_path_data.get()
-    setting['extension'] = entry_ext.get()
+    get_curr_setting()
     try:
         with open('setting.json', 'w') as settingFile:
             json.dump(setting, settingFile)
@@ -47,13 +44,23 @@ def save_setting():
     else:
         messagebox.showinfo('saved current setting')
 
+def change_names():
+    get_curr_setting()
+    data = get_data(setting['path_data'])
+
+def get_curr_setting():
+    setting['path_in'] = entry_path_in.get()
+    setting['path_out'] = entry_path_out.get()
+    setting['path_data'] = entry_path_data.get()
+    setting['extension'] = entry_ext.get()
+
 
 btn_help_data = Button(root, text='[?]', overrelief=SOLID)
 btn_path_data = Button(root, text='json data file', overrelief=SOLID, command=get_path_data)
 btn_path_in = Button(root, text='input file path', overrelief=SOLID, command=get_path_in)
 btn_path_out = Button(root, text='output file path', overrelief=SOLID, command=get_path_out)
 btn_save = Button(root, text='setting save', overrelief=SOLID, command=save_setting)
-btn_change = Button(root, text='file name change', overrelief=SOLID)
+btn_change = Button(root, text='change file\'s names', overrelief=SOLID)
 
 title_label.grid(row=0, column=0, padx=5, pady=5, columnspan=3, sticky=EW)
 btn_path_data.grid(row=1, column=0, padx=5, pady=2, sticky=EW)
