@@ -1,8 +1,9 @@
 import os
 import json
 from tkinter import *
-from tkinter import filedialog, messagebox
+from tkinter import filedialog, messagebox, tix
 from fn_file import *
+from tooltip import *
 
 setting = get_setting()
 
@@ -18,6 +19,8 @@ entry_path_in = Entry(root, width=30)
 entry_path_out = Entry(root, width=30)
 label_ext = Label(root, text='[ext]')
 entry_ext = Entry(root, width=4)
+label_help_data = Label(root, text='[?]')
+tooltip_help_data = CreateToolTip(label_help_data,str_help_data)
 
 
 # TODO - call initial dir from entry
@@ -55,7 +58,6 @@ def get_curr_setting():
     setting['extension'] = entry_ext.get()
 
 
-btn_help_data = Button(root, text='[?]', overrelief=SOLID)
 btn_path_data = Button(root, text='json data file', overrelief=SOLID, command=get_path_data)
 btn_path_in = Button(root, text='input file path', overrelief=SOLID, command=get_path_in)
 btn_path_out = Button(root, text='output file path', overrelief=SOLID, command=get_path_out)
@@ -69,7 +71,7 @@ btn_path_in.grid(row=2, column=0, padx=5, pady=2, sticky=EW)
 entry_path_in.grid(row=2, column=1, padx=5, pady=2)
 btn_path_out.grid(row=3, column=0, padx=5, pady=2, sticky=EW)
 entry_path_out.grid(row=3, column=1, padx=5, pady=2)
-btn_help_data.grid(row=1, column=2, padx=5, pady=2, sticky=EW)
+label_help_data.grid(row=1, column=2, padx=5, pady=2, sticky=EW)
 label_ext.grid(row=2, column=2, padx=5, pady=2, sticky=EW)
 entry_ext.grid(row=3, column=2, padx=5, pady=2)
 btn_save.grid(row=4, column=0, padx=5, pady=2, sticky=EW)
