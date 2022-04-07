@@ -19,12 +19,14 @@ def get_setting():
     return setting
 
 def get_data(path_data):
-    json_data = []
+    json_data = dict()
     try:
         with open(path_data, 'r') as file_json_data:
             json_data['data'] = json.load(file_json_data)
     except IOError:
-        json_data['result'] = 'error'
+        json_data['result'] = 'error_io'
+    except json.JSONDecodeError:
+        json_data['result'] = 'error_json'
     else:
         json_data['result'] = 'success'
     finally:

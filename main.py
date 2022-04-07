@@ -43,9 +43,9 @@ def save_setting():
         with open('setting.json', 'w') as settingFile:
             json.dump(setting, settingFile)
     except IOError as ioe:
-        messagebox.showerror(ioe)
+        messagebox.showerror('error',ioe)
     else:
-        messagebox.showinfo('saved current setting')
+        messagebox.showinfo('inform','saved current setting')
 
 def change_names():
     get_curr_setting()
@@ -62,7 +62,7 @@ btn_path_data = Button(root, text='json data file', overrelief=SOLID, command=ge
 btn_path_in = Button(root, text='input file path', overrelief=SOLID, command=get_path_in)
 btn_path_out = Button(root, text='output file path', overrelief=SOLID, command=get_path_out)
 btn_save = Button(root, text='setting save', overrelief=SOLID, command=save_setting)
-btn_change = Button(root, text='change file\'s names', overrelief=SOLID)
+btn_change = Button(root, text='change file\'s names', overrelief=SOLID, command=change_names)
 
 title_label.grid(row=0, column=0, padx=5, pady=5, columnspan=3, sticky=EW)
 btn_path_data.grid(row=1, column=0, padx=5, pady=2, sticky=EW)
