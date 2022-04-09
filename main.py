@@ -1,7 +1,7 @@
 import os
 import json
 from tkinter import *
-from tkinter import filedialog, messagebox, tix
+from tkinter import filedialog, messagebox
 from fn_file import *
 from tooltip import *
 
