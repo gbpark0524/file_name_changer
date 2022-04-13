@@ -50,6 +50,15 @@ def save_setting():
 def change_names():
     get_curr_setting()
     data = get_data(setting['path_data'])
+    if data['result'] == 'success':
+        messagebox.showinfo('inform',data['data'])
+    elif data['result'] == 'error_json':
+        messagebox.showerror('error','json format is not correct')
+    elif data['result'] == 'error_io':
+        messagebox.showerror('error','io error occurred')
+    else:
+        messagebox.showerror('error','unknown error occurred')
+
 
 def get_curr_setting():
     setting['path_in'] = entry_path_in.get()
