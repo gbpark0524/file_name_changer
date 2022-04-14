@@ -43,21 +43,26 @@ def save_setting():
         with open('setting.json', 'w') as settingFile:
             json.dump(setting, settingFile)
     except IOError as ioe:
-        messagebox.showerror('error',ioe)
+        messagebox.showerror('error', ioe)
     else:
-        messagebox.showinfo('inform','saved current setting')
+        messagebox.showinfo('inform', 'saved current setting')
 
 def change_names():
     get_curr_setting()
     data = get_data(setting['path_data'])
     if data['result'] == 'success':
-        messagebox.showinfo('inform',data['data'])
+        in_names = data['data']
+        extention = setting['extension']
+        for before_name in in_names:
+            after_name = in_names[before_name]
+            os.rename(os.path.join(setting['path_in'], before_name + '.' + extention),
+                      os.path.join(setting['path_out'], after_name + '.' + extention))
     elif data['result'] == 'error_json':
-        messagebox.showerror('error','json format is not correct')
+        messagebox.showerror('error', 'json format is not correct')
     elif data['result'] == 'error_io':
-        messagebox.showerror('error','io error occurred')
+        messagebox.showerror('error', 'io error occurred')
     else:
-        messagebox.showerror('error','unknown error occurred')
+        messagebox.showerror('error', 'unknown error occurred')
 
 
 def get_curr_setting():
