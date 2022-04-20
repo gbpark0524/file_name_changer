@@ -23,19 +23,29 @@ label_help_data = Label(root, text='[?]')
 tooltip_help_data = CreateToolTip(label_help_data, str_help_data)
 
 
-# TODO - call initial dir from entry
 def get_path_in():
-    entry_path_in.delete(0, END)
-    entry_path_in.insert(0, filedialog.askdirectory(initialdir=setting['path_in'], title="select folder"))
+    init_dir = entry_path_in.get()
+    get_dir = filedialog.askdirectory(initialdir=init_dir, title="select folder")
+    if get_dir != "":
+        entry_path_in.delete(0, END)
+        entry_path_in.insert(0, get_dir)
+
 
 def get_path_out():
-    entry_path_out.delete(0, END)
-    entry_path_out.insert(0, filedialog.askdirectory(initialdir=setting['path_out'], title="select folder"))
+    init_dir = entry_path_out.get()
+    get_dir = filedialog.askdirectory(initialdir=init_dir, title="select folder")
+    if get_dir != "":
+        entry_path_out.delete(0, END)
+        entry_path_out.insert(0, get_dir)
+
 
 def get_path_data():
-    entry_path_data.delete(0, END)
-    entry_path_data.insert(0, filedialog.askopenfilename(initialdir=setting['path_data'],
-                                                         title="select json file", filetypes=[("JSON files", ".json")]))
+    init_dir = entry_path_data.get()
+    get_file = filedialog.askopenfilename(initialdir=init_dir, title="select json file", filetypes=[("JSON files", ".json")])
+    if get_file != "":
+        entry_path_data.delete(0, END)
+        entry_path_data.insert(0, get_file)
+
 
 def save_setting():
     get_curr_setting()
@@ -46,6 +56,7 @@ def save_setting():
         messagebox.showerror('error', ioe)
     else:
         messagebox.showinfo('inform', 'saved current setting')
+
 
 def change_names():
     get_curr_setting()
