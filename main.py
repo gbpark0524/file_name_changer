@@ -20,7 +20,7 @@ entry_path_out = Entry(root, width=30)
 label_ext = Label(root, text='[ext]')
 entry_ext = Entry(root, width=4)
 label_help_data = Label(root, text='[?]')
-tooltip_help_data = CreateToolTip(label_help_data,str_help_data)
+tooltip_help_data = CreateToolTip(label_help_data, str_help_data)
 
 
 # TODO - call initial dir from entry
@@ -52,11 +52,13 @@ def change_names():
     data = get_data(setting['path_data'])
     if data['result'] == 'success':
         in_names = data['data']
-        extention = setting['extension']
+        extension = setting['extension']
+        extension = '.' + extension if extension != "" else ""
+
         for before_name in in_names:
             after_name = in_names[before_name]
-            os.rename(os.path.join(setting['path_in'], before_name + '.' + extention),
-                      os.path.join(setting['path_out'], after_name + '.' + extention))
+            os.rename(os.path.join(setting['path_in'], before_name + extension),
+                      os.path.join(setting['path_out'], after_name + extension))
     elif data['result'] == 'error_json':
         messagebox.showerror('error', 'json format is not correct')
     elif data['result'] == 'error_io':
