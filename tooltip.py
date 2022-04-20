@@ -45,7 +45,7 @@ class CreateToolTip(object):
         self.tw.wm_overrideredirect(True)
         self.tw.wm_geometry("+%d+%d" % (x, y))
         label = tk.Label(self.tw, text=self.text, justify='left',
-                         background="#ffffff", relief='solid', borderwidth=1,
+                         background="#ffffff", fg="#000000", relief='solid', borderwidth=1,
                          wraplength=self.wraplength)
         label.pack(ipadx=1)
 
@@ -58,8 +58,8 @@ class CreateToolTip(object):
 
 str_help_data = """from 'file.txt' to 'data.txt'
 
-without ext
-{"file1.txt": "data1.txt", "file2.txt": "data2.txt"}
+without ext setting
+{"before.txt": "after.txt", "before2.txt": "after2.txt"}
 
 with ext = 'txt'
-{"file1": "data1", "file2": "data2"}"""
+{"before": "after", "before2": "after2"}"""
