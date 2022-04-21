@@ -9,9 +9,9 @@ setting = get_setting()
 
 root = Tk()
 # root.geometry("600x400")
-root.title("fileNameChanger")
+root.title("fileNameChanger v1.0.0")
 root.resizable(False, False)
-title_label = Label(root, text='[file name changer]')
+# title_label = Label(root, text='[file name changer]')
 # title_label = Label(root, text='[file name changer]', borderwidth=2, relief="groove")
 
 entry_path_data = Entry(root, width=30)
@@ -91,7 +91,7 @@ btn_path_out = Button(root, text='output file path', overrelief=SOLID, command=g
 btn_save = Button(root, text='setting save', overrelief=SOLID, command=save_setting)
 btn_change = Button(root, text='change file\'s names', overrelief=SOLID, command=change_names)
 
-title_label.grid(row=0, column=0, padx=5, pady=5, columnspan=3, sticky=EW)
+# title_label.grid(row=0, column=0, padx=5, pady=5, columnspan=3, sticky=EW)
 btn_path_data.grid(row=1, column=0, padx=5, pady=2, sticky=EW)
 entry_path_data.grid(row=1, column=1, padx=5, pady=2)
 btn_path_in.grid(row=2, column=0, padx=5, pady=2, sticky=EW)
