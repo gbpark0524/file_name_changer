@@ -56,7 +56,7 @@ class CreateToolTip(object):
             tw.destroy()
 
 
-str_help_data = """from 'file.txt' to 'data.txt'
+str_help_data = """from 'before.txt' to 'after.txt'
 
 without ext setting
 {"before.txt": "after.txt", "before2.txt": "after2.txt"}
